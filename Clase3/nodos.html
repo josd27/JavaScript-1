@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <input type="number" id="caja1" placeholder="Numero 1" />
+    <input type="number" id="caja2" placeholder="Numero 2"/>
+    <button onclick="realizarOperacion()" >Aceptar</button>
+    <ul id="lista-padre">
+        <li class="lista"></li>
+        <li class="lista"></li>
+        <li class="lista"></li>
+        <li class="lista"></li>
+        <li class="lista"></li>
+    </ul>
+    <div id="resultado"></div>
+    <script>
+        function sumar(a,b){
+            let resultado= a+b;
+            let div= document.getElementById("resultado");
+            //div.innerHTML=div.innerHTML+"<h1>"+ resultado +"</h1>";
+            div.innerHTML+="<h1>"+ resultado +"</h1>";
+            div.style.backgroundColor="red";
+        }
+        function realizarOperacion(){
+            let c1= document.getElementById("caja1");
+            let c2= document.getElementById("caja2");
+            let lista=document.getElementById("lista-padre");
+            console.log(c1);
+            console.log(c2);
+            console.log(lista);
+            sumar(c1.value,c2.value);
+            //[object HTMLInputElement][object HTMLInputElement]
+        }
+        
+    </script>
+</body>
+</html>

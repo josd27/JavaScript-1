@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function ejercicioAlumnos(){
+            //new Object() = {}
+            //let alu = new Array();
+            /*Array:permite guardar varios valores en una sola variable*/
+            let alumnos=["Cesar","Heraldo","Jason"];//array vacio
+            //console.log(alumnos[1]);
+            for(let i=0; i<alumnos.length;i++){
+                console.log(alumnos[i]);
+            }
+            /*let alumno1="Cesar";
+            let alumno2="Heraldo";
+            let alumno3="Jason";*/
+            console.log(alumnos);
+            //console.log(alu);
+            //promedio de notas
+            //array, arreglo,lista,vector
+        }
+        
+        function calcularPromedio(notas,nombre){
+            
+            console.log(notas);
+            let suma=0;
+            for(let i=0;i<notas.length;i++){
+                suma=suma+notas[i];
+                //console.log(suma/notas.length);
+            }
+            let promedio=suma/notas.length;
+            if(promedio>=40){
+                console.log(nombre, "Aprobado");
+            }
+            else{
+                console.log(nombre,"Reprobado");
+            }
+            console.log(suma/notas.length);
+            //C# length 2
+        }
+        
+        /*let notasJson=[60,50,65];
+        let notasHeraldo=[43,55,65,70,70];
+        let notasCesar=[35,65,65,15,70,65];
+        calcularPromedio(notasJson, "Jason");
+        calcularPromedio(notasHeraldo, "Heraldo");
+        calcularPromedio(notasCesar, "Cesar");*/
+        function sumarV2(n,m){
+            let resultado=n+m;
+            console.log(resultado);
+        }
+        function sumar(n,m){
+            let resultado=n+m;
+            console.log(resultado);
+            return resultado;
+        }
+        let re=sumar(1,"1");
+        console.log("resultado de funcion", re);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
