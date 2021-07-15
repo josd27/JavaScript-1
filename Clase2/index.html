@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--<script src="ejemplo.js"></script>-->
+    <script>
+        /*var edad=18;
+        let nombre="Jose";
+        //condicional
+        if(9>0){
+            var apellido="Quezada";
+            let apellidoLet="Quezada";
+        }        
+        //Aca no existe apellidoLet
+        //Si existe apellido que esta declarado con var
+        function ejemplo(){
+            var dato1=1;//enteros
+            let dato2=2;//enteros
+        }
+        */
+        const PI=3.14;
+        const HRSDIA=24;
+        //hrsDia=48; esos es un erro
+        let nombre="Jose";
+        nombre="David";
+        var apellido="Quezada";
+        function nombreCompleto(dato){
+            let nombre= dato+"Quezada";
+            var apellido="Rivas";
+            console.log(nombre,"function");
+            console.log(apellido,"funcion");
+            //ciclo de vida scope function
+        }
+        nombreCompleto("Jose");
+        console.log(nombreCompleto());
+        console.log(apellido);
+        console.log(nombre);   
+        //tanto dato1 como dato2 no existen
+        //condicional
+        if(1>9){
+            //>,<,>=,<=,==,===,>==,<==
+            console.log("es mayor");
+        }
+        else{
+            console.log("es menor");
+        }
+
+        if("9"==9){//compara valor
+            console.log("son iguales");
+        }
+        else{
+            console.log("no son iguales");
+        }
+        let edad=18;
+        let vip=false;
+        //and && ||
+        //true ? true: "6"; operador ternario
+        if(edad>=18){
+            if(vip==true){
+                if(true){
+                    if(9>1){
+                        console.log("Entro al local");
+                    }
+                    else{
+                        console.log("No entro al local");
+                    }
+                }
+                else{
+                    console.log("No entro al local");
+                }
+            }
+            else{
+                console.log("No entro al local");
+            }
+        }
+        else{
+            console.log("No entro al local");
+        }   
+
+        if(edad>=18 && vip==true && true && 9>1){
+            console.log("Entro al local");
+        }
+        else{
+            console.log("No entro al local");
+        }
+        if(!true){
+
+        }
+        
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

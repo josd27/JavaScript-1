@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var nombre="Jose";//ambito global
+        var edad =18;
+        if(edad>=18){
+            var nombre="David";//ambito global
+        }
+        console.log(nombre);
+        /*
+        * En la gran mayoria de los lenguajes las variables declaradas 
+        * en un ambito viven y mueren en ese ambito.
+        * En este caso la variable declarada dentro del ambito del if sigue siendo global,
+        * por este motivo en ECMA6 se agrego la opcion de hacer let el cual vive y muere
+        * en su ambito.
+        * Funciones
+        * dentro de las funciones tanto var como let viven y mueren en la funcion sin alterar 
+        * los datos globales 
+        */
+        let apellido="Quezada";
+        let titulado=true;
+        if(titulado){
+            let apellido="Rivas";
+        }
+        console.log(apellido);
+        /*
+        * En este caso con let las variables apellidos son validas solo en sus ambitos
+        */
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
