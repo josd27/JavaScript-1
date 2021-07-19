@@ -22,6 +22,7 @@
         #slide{
             width: 300%;
             position: relative;
+            transition: all 2s ;
         }
         #slide div{
             display: inline-block;
@@ -40,6 +41,34 @@
             <div><img src="img/slide3.PNG" alt=""/></div>
         </div>
     </div>
-    
+    <button onclick="atras()">atras</button>
+    <button onclick="adelante()">adelante</button>
+    <script>
+        let slide= document.getElementById("slide");//undefined
+        let ancho =2864/3;
+        let contar=1;
+        //console.log(ancho);
+        //let slide= $("slide");
+        function atras(){
+            let ancho=slide.style.width;
+            //let slide= document.getElementById("slide");//undefined
+            console.log(slide, slide.style.left,ancho);
+            slide.style.left= ancho;//slide.style.left ;
+        }
+
+        function adelante(){
+            console.log(contar);
+            //let slide= document.getElementById("slide");//undefined
+            ancho=ancho*(contar%3);
+            console.log(ancho);
+            //ancho=ancho*-1;
+            slide.style.left= ancho*-1+"px";
+            
+            contar=contar+1;//contar++;
+            if(contar>3){
+                contar=0;
+            }
+        }
+    </script>
 </body>
 </html>
