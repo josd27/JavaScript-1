@@ -16,6 +16,9 @@
         //1.1 codigo que se debe ejecutar de forma inmediata
         alert(saludo);
         calcularPar();
+        calcularPrimo();
+        calcularPrimo2();
+        calcularPrimo3();
         //2 -funciones-> solo se ejecutan al momento de invocar a la funcion
         function calcularPar(){
             //todos los pares entre 0-50
@@ -32,10 +35,52 @@
         }
 
         function calcularPrimo(){
-            for(let i=1;i<=50;i++){
+            let contador=0;
+            for(let numero=1;numero<=50;numero++){
                 //console.log(i);
+                contador=0;
                 //mostrar por consola solo los primos
                 //un numero primo es un numero divisible SOLO por 1 y si mismo
+                for(let d=1;d<=numero;d++){
+                    if(numero % d==0){
+                        contador=contador+1;//contador++;
+                    }
+                }
+                if(contador==2){
+                    console.log(numero, "es primo");
+                }
+            }
+        }
+
+        function calcularPrimo2(){
+            let contador=0;
+            for(let numero=1; numero <=50; numero++){
+                contador=0;
+
+                for(let d=1; d<= numero/2;d++){
+                    if(numero % d ==0){
+                        contador=contador+1;
+                    }
+                }
+                if(contador==1){
+                    console.log(numero, "es primo v2");
+                }
+
+            }
+        }
+        function calcularPrimo3(){
+            let primo=true;
+            for(let numero=1; numero<=50; numero++){
+                primo=true;
+                for(let d=2; d<= numero/2; d++){
+                    if(numero%d==0){
+                        primo=false;
+                        break;
+                    }
+                }
+                if(primo){
+                    console.log(numero,"es primo v3");
+                }
 
             }
         }

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <!--Action por defecto es la misma pagina
+            metodo por defecto es get
+        -->
+        <input type="text" id="nombre" placeholder="Nombre"/>
+        <input type="text" id="apellido" placeholder="Apellido"/>
+        <input type="number" id="edad" placeholder="Edad"/>
+        <button onclick="agregar()" type="button">Aceptar</button>
+        <!--Type button cuando esta dentro de un formulario submit-->
+    </form>
+    
+    <div id="estudiantes"></div>
+    <script>
+
+        function agregar(){
+            const inputNombre=document.getElementById("nombre");
+            const inputApellido= document.getElementById("apellido");
+            const inputEdad=document.getElementById("edad");
+            const div= document.getElementById("estudiantes");
+            //let ejemplo= document.querySelector("#nombre");//1elemento
+            //let ejemplo2 = document.querySelectorAll(".demo");
+            //let ejemplo3 = document.querySelector(".nav ul li h1");jquery
+            let persona1= new Persona();
+            persona1.nombre=inputNombre.value;
+            persona1.apellido=inputApellido.value;
+            persona1.edad=inputEdad.value;
+            console.log(persona1);
+            div.innerHTML+="<div class='agregado'>"+persona1.nombre+" " +persona1.apellido+"</div>"
+            //Limpiar
+            inputNombre.value="";
+            inputApellido.value="";
+            inputEdad.value="";
+        }
+
+
+
+
+        //REST
+        function Persona(){//funcion constructora
+            //self = this
+            this.nombre="";//atributo-campo
+            this.apellido="";
+            this.edad=0;
+            this.direccion="";//[]-> muchas direcciones
+            this.saludar= function(){//metodo()
+                alert("hola "+ this.nombre);
+            }
+            this.nombreCompleto=function(){
+                return this.nombre + " "+ this.apellido;
+            }
+
+        }
+
+        /*Persona.prototype.saludar=function(){solo para agregar funcionalidades nuevas
+            alert("Hola "+ this.apellido);trim string quita los espacios en blanco
+        }*/
+        //Persona.prototype.nacionalidad="";
+        /*let persona1= new Persona();//molde-estructura
+        persona1.nombre="Jose";
+        persona1.apellido="Quezada";
+        persona1.edad=20;
+        persona1.nacionalidad="chilena";//sin adultera obj Persona
+        persona1.saludar();
+        let persona2= new Persona();
+        console.log(persona1)
+        console.log(persona2);
+        /*
+        for(let i =0; i<numero; i++){
+
+        }
+        let i=0;
+        while(i<numero){
+            i++;
+        }
+        */
+    </script>
+</body>
+</html>
