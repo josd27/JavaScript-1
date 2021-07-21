@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        /*opcion 2 d-flex
+        body>div{
+            display: flex;
+        }
+        form{
+            width: 50%;
+        }
+        body>div>div{
+            width: 50%;
+        }*/
+        /* version 1 d-block
+        body>div{
+            font-size: 0px;
+        }
+        body>div>div, form{
+            width: 50%;
+            display: inline-block;
+            font-size: 15px;
+            vertical-align: top;
+        }*/
+    </style>
+</head>
+<body>
+    <div class='row'>
+        <form class='col-md-6'>
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+            <input type="number" name="precio" id="precio" placeholder="Precio">
+            <input type="number" name="cantidad" id="cantidad" placeholder="Cantidad">
+            <button id="btnIngresar" type="button">Ingresar</button>
+        </form>
+        <div class="col-md-6" id="contenedor"></div>
+    </div>
+    
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script>
+        const inputNombre=document.getElementById("nombre");
+        const inputPrecio=document.getElementById("precio");
+        const inputCantidad=document.getElementById("cantidad");
+        const div= document.getElementById("contenedor");
+        const btn=document.getElementById("btnIngresar");
+        let listaProductos=[];//new Array();
+        btn.addEventListener("click", agregar);//debo agregar eventos a elementos creados dinamicamente
+        function Producto(){
+            //nombre
+            //precio
+            //cantidad
+            //subtotal
+            this.nombre="";
+            this.precio=0;
+            this.cantidad=0;
+            this.subtotal=0;
+            this.Calcular=function(){
+                this.subtotal=this.cantidad*this.precio;
+            }
+        }
+        function agregar(){
+            let producto= new Producto();
+            producto.nombre=inputNombre.value;
+            producto.precio=inputPrecio.value;
+            producto.cantidad=inputCantidad.value;
+            producto.Calcular();
+            listaProductos.push(producto);
+            
+            armarHTML();
+            console.log(listaProductos);
+            limpiar();
+        }
+        function armarHTML(){
+            let html="";
+            html="<table id='table' class='table'>";
+            html+="<thead><tr><td>Producto</td><td>Precio</td>";
+            html+="<td>Cantidad</td><td>SubTotal</td></tr></thead>";
+            html+="<tfoot><tr><td>Producto</td><td>Precio</td>";
+            html+="<td>Cantidad</td><td>SubTotal</td></tr></tfoot><tbody>";            
+            /*iterar sobre el array*/
+            let total=0;
+            for(let i=0; i<listaProductos.length; i++){
+                total+=listaProductos[i].subtotal;
+                html+="<tr><td>"+listaProductos[i].nombre+"</td>";
+                html+="<td>"+listaProductos[i].precio+"</td>";
+                html+="<td>"+listaProductos[i].cantidad+"</td>";
+                html+="<td>"+listaProductos[i].subtotal+"</td></tr>";
+            }
+            
+            
+            html+="</tbody></table>";
+            html+="<div><h1>"+total+"</h1></div>"
+
+            console.log(html);
+            div.innerHTML=html;
+            let table= document.getElementById("table");
+            //table.DataTable();
+            
+        }
+
+        function limpiar(){
+            inputNombre.value="";
+            inputCantidad.value="";
+            inputPrecio.value="";
+        }
+    </script>
+</body>
+</html>
