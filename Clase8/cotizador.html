@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="number" id="valorPlan" placeholder="Valor plan"/>
+        <button type="button">Cotizar</button>
+    </form>
+    <div id="resultado"></div>
+    <script>
+        recuperarUF();
+        function recuperarUF(){
+            //AJAX Asyncronous JavaScript and XML
+            var xhr= new XMLHttpRequest();
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4 && xhr.status==200){//404, 500,200
+                    console.log(xhr.responseText);
+                    var json=JSON.parse(xhr.responseText);
+                    console.log(json);
+                    console.log(json.UFs[0].Valor);
+                    alert(json.UFs[0].Valor);
+                }
+                //readystate -> codigo identifica el estado de una solicitud
+                /*
+                0-> la solicitud no ha iniciado
+                1-> cliente envia la informacion al servidor
+                2-> servidor recibe la informacion del cliente
+                3-> servidor envia la respuesta al cliente
+                4-> cliente recibe la respuesta del servidor
+                */
+
+            }
+            xhr.open("get","https://api.sbif.cl/api-sbifv3/recursos_api/uf?apikey=a6073621b6b49dffb8bcd2fe83dc304888a6766b&formato=json");
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
