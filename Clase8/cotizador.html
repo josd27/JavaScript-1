@@ -5,25 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 <body>
     <form>
         <input type="number" id="valorPlan" placeholder="Valor plan"/>
-        <button type="button">Cotizar</button>
+        <button id="btnCotizar" type="button">Cotizar</button>
     </form>
     <div id="resultado"></div>
     <script>
-        recuperarUF();
+        var valorplan=$("#valorPlan");
+        var div = $("#resultado");
+        $("#btnCotizar").click(function(){            
+            recuperarUF();
+        });
+
+        //Asincrono
         function recuperarUF(){
             //AJAX Asyncronous JavaScript and XML
             var xhr= new XMLHttpRequest();
             xhr.onreadystatechange=function(){
                 if(xhr.readyState==4 && xhr.status==200){//404, 500,200
-                    console.log(xhr.responseText);
+                    //console.log(xhr.responseText);
                     var json=JSON.parse(xhr.responseText);
-                    console.log(json);
-                    console.log(json.UFs[0].Valor);
-                    alert(json.UFs[0].Valor);
+                    //console.log(json);
+                    //console.log(json.UFs[0].Valor);
+                    //alert(json.UFs[0].Valor);
+                    console.log(valorplan.val());//value
+                    var valor=valorplan.val();
+
+                    var uf=json.UFs[0].Valor;
+                    console.log(uf);
+                    //quitar el punto y quedarse solo con la parte entera
+                    //substring, 29.456,45
+                    //remove/replace . 
+                    //opcion 2
+                    //replace el punto, reemplazar la coma por el punto
+                    //29456.45
+                    var totalCLP= 0;//valor*uf;
+                    //console.log();
+                    div.append(valor + ":"+ totalCLP+"</br>");
+                    //append
                 }
                 //readystate -> codigo identifica el estado de una solicitud
                 /*
@@ -35,6 +58,7 @@
                 */
 
             }
+            //request
             xhr.open("get","https://api.sbif.cl/api-sbifv3/recursos_api/uf?apikey=a6073621b6b49dffb8bcd2fe83dc304888a6766b&formato=json");
             xhr.send();
         }

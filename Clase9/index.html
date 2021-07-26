@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        #contenedor-botones{
+            background-color: rgb(124, 170, 255);
+            min-height: 200px;
+        }
+        form{
+            background-color: rgb(218, 183, 129);
+            min-height: 200px;
+            /*height: ;
+            background-color: #0F0;
+            background-color: rgba(0,255,0,0);*/
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor-botones">
+        <button class="btn">Boton1</button>
+        <button class="btn">Boton2</button>
+        <button class="btn">Boton3</button>
+    </div>
+    <form>
+        <input type="text" name="nombre"/>
+        <button>Aceptar</button>
+    </form>
+    <script>
+        $(document).ready(function(){
+            //To do
+            $("form").mouseenter(function(event){
+                console.log(event);
+                console.log("ejecutado por mouse enter")
+            });
+            $("form").mouseleave(function(event){
+                console.log(event);
+                console.log("ejecutado por mouse leave");
+            });
+            $("form").mousemove(function(event){
+                console.log(event);
+                console.log("ejecutado por mouse move");
+            });
+            $("form").mousedown(function(){
+                console.log("soy el evento mouse down");
+            });
+            $("form").click(function(){
+                console.log("soy el evento click");
+            });
+            $("form").submit(function(event){
+                event.preventDefault();
+                //acciones
+            });
+            $(".btn").click(function(event){
+                console.log(event.target);
+                console.log("soy el evento click");
+            });
+            $("#contenedor-botones button").dblclick(function(event){
+                console.log(event.target);
+                console.log("soy el evento doble click");
+            });
+
+        });
+    </script>
+</body>
+</html>
