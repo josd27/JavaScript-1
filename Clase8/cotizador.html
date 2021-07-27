@@ -29,7 +29,7 @@
                 if(xhr.readyState==4 && xhr.status==200){//404, 500,200
                     //console.log(xhr.responseText);
                     var json=JSON.parse(xhr.responseText);
-                    //console.log(json);
+                    console.log(json);
                     //console.log(json.UFs[0].Valor);
                     //alert(json.UFs[0].Valor);
                     console.log(valorplan.val());//value
@@ -59,7 +59,7 @@
 
             }
             //request
-            xhr.open("get","https://api.sbif.cl/api-sbifv3/recursos_api/uf?apikey=a6073621b6b49dffb8bcd2fe83dc304888a6766b&formato=json");
+            xhr.open("get","https://api.sbif.cl/api-sbifv3/recursos_api/uf/2021?apikey=a6073621b6b49dffb8bcd2fe83dc304888a6766b&formato=json");
             xhr.send();
         }
     </script>

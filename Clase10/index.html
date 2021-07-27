@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+</head>
+<body>
+    <div id="imagenes-gatos">
+        
+    </div>
+    <script>
+        /*hacerAjax("cmf", "get");
+        hacerAjax("gatos", "post");
+        hacerAjax("loginfacebook","post");*/
+        //endpoint
+        let url ="https://api.thecatapi.com/v1/images/search";
+        let gatos=[];
+        for(let i=0; i<3;i++){
+            hacerAjax(url,"get");//asyncrono
+        }
+        
+        /*
+        [
+            {
+                "breeds":[],
+                "id":"80f",
+                "url":"https://cdn2.thecatapi.com/images/80f.gif",
+                "width":388,
+                "height":306
+            }
+        ]
+        */
+
+        function dibujar(){
+            let div= $("#imagenes-gatos");
+            console.log(gatos.length,"dibujar");
+            for(let i=0; i<gatos.length;i++){
+                div.append("<img src='"+ gatos[i] +"'/>");//"" ''
+                //div.append('<img src=""/>');
+            }
+            div.append("<img src=''/>");
+            
+
+        }
+        function hacerAjax(url, metodo){
+            const xhr= new XMLHttpRequest();
+            xhr.onload=function(){
+                //console.log(xhr.responseText);
+                let json= JSON.parse(xhr.responseText);
+                console.log(json[0].url);
+                gatos.push(json[0].url);
+                console.log(gatos);
+                if(gatos.length===3){
+                    dibujar();
+                }
+                
+            }            
+            xhr.open(metodo, url);
+            xhr.send();
+        }
+        /*
+        xhr.onreadystatechange=function(){
+                if(xhr.readyState===4 && xhr.status===200){
+                    //proceso final
+                }
+                else if(xhr.status!=200 && xhr.readyState===4){
+                    //mostrar  mensaje de error
+                }
+                else if(xhr.readyState<4){
+                    /*1 /25%
+                    2 /50%
+                    3 /75%
+                    4 /100
+                }
+            }
+        */
+    </script>
+</body>
+</html>
