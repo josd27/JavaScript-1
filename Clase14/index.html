@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Introduccion a Clases/Function constructoras
+        //Arrow Function/Function
+        /*Que es un clase?
+        una representacion de un objeto que existe en el mundo real
+        instancia-> una version nueva
+        instancia ->llamada a un objeto
+        objeto->tiene comportamiento->atributos
+        let objeto ={};
+        */
+        function Ventas(){//funcion constructora, pseudoclases
+            this.Monto=0;
+            this.Cantidad=0;
+            this.Vender= (cliente)=> "vendido a "+cliente
+        }
+
+        let venta1= new Ventas();
+        console.log(venta1);
+
+        /*UML-> clases*/
+        /*
+        Nomenclaturas para nombrar variables y clases
+        camelCase -> nombrePersona
+        snake_case -> nombre_persona
+        PascalCase -> NombrePersona
+        */
+       let nombre="Jose";
+       nombre={};
+       nombre=0;
+       nombre=true;
+        class Silla{//PascalCase
+            constructor(){//inicializo elementos al hacer new
+                console.log("Soy una nueva silla");
+                this.Color="";
+                this.Material="";
+                this.Alto=0;
+                this.Ancho=0;
+                this.CantidadPatas=0;
+                this.Reclinable=false;
+
+            }
+            Reclinar() {
+                console.log("");
+                if(this.Reclinable){
+                    console.log("Reclinando");
+                }
+                else{
+                    console.log("Se rompio la silla");
+                }
+            }
+            Romper(fuerza=50){
+                console.log("la silla esta rota aplique una fuerza de "+fuerza);
+            }
+        }
+
+        let sillita0 = new Silla();
+        let sillita1 = new Silla();
+        /*let sillita2 = new Silla();
+        let sillita3 = new Silla();
+        let sillita4 = new Silla();
+        let sillita5 = new Silla();
+        let sillita6 = new Silla();
+        let sillita7 = new Silla();
+        let sillita8 = new Silla();
+        let sillita9 = new Silla();*/
+
+        let sillita2={
+                Color:"",
+                Material:"",
+               
+                CantidadPatas:0,
+                Reclinable:false,
+        }
+        console.log(sillita0);
+        sillita1.Color="Gris";
+        sillita1.Material="Metal";
+        sillita1.TieneRespaldo=true;
+        sillita1=null;
+        sillita1= new Silla();
+        console.log(sillita1);
+        sillita0.Color="Cafe";
+        sillita0.Material="Madera";
+        sillita0.CantidadPatas=4;
+        sillita0.Alto=150;
+        sillita0.Ancho=55;
+        sillita0.Reclinable=true;
+        sillita0.Reclinar();
+        console.log(sillita0);
+        /*Herencia*/
+        class Banca extends Silla{           
+            Rigida=true;
+        }
+
+        let banca0= new Banca();
+        
+        console.log(banca0, "soy una banca");
+        
+        function saludar(nombre, apellido){
+            alert("Hola "+ nombre+ " "+ apellido);
+            return "Hola "+ nombre+ " "+ apellido;
+        }
+
+        //lambda->funcion anonimas
+        saludar= (nombre, apellido) => {
+            alert("Hola "+ nombre+ " "+ apellido);
+            return "Hola "+ nombre+ " "+ apellido;
+        }
+        (nombre, apellido) => "Hola "+ nombre +" "+ apellido;
+        
+    </script>
+</body>
+</html>

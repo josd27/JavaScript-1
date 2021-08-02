@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var productos=[];
+
+        function productosIniciales(){
+            productos.push({
+                Producto:"Amonio C",
+                ID:123456789,
+                Stock:1502,
+                Precio:3750
+            });
+            productos.push({
+                Producto:"Cloro Gel",
+                ID:987654321,
+                Stock:1025,
+                Precio:1350
+            });
+            productos.push({
+                Producto:"Lisoform",
+                ID:456123789,
+                Stock:327,
+                Precio:2590
+            });
+        }
+
+        function obtenerPrecio(nombre){
+            for(var i = 0;i<productos.length;i++){
+                if(nombre==productos[i].Producto){
+                    console.log(productos[i])
+                    alert("#" + (i+1)+ " " + productos[i].Stock);
+                }  
+                console.log("funciona array");
+            }   
+        }
+
+
+        function recorreArray2(value,index,array){
+            console.log(valor, indice,array);
+            
+            
+        }
+        
+        productosIniciales();
+
+        productos.forEach(recorreArray2);
+
+        obtenerPrecio("Lisoform" ,300);
+        /*
+        //SEMANAL
+        1pt aporte mas en discord
+        0.8pt segunda aporte mas en discord
+        0.5pt tercera persona que aporte mas en discord
+        */
+
+    </script>
+</body>
+</html>

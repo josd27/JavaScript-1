@@ -1,0 +1,5 @@
+Defina los metodos y propiedades para las clases
+-Cliente
+-Venta
+-Producto
+Para los metodos agregue solo un console.log con un texto representativo a la accion.

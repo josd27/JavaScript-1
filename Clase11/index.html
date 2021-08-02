@@ -51,7 +51,7 @@
     });
     let urlDolar="https://api.sbif.cl/api-sbifv3/recursos_api/dolar?apikey=a6073621b6b49dffb8bcd2fe83dc304888a6766b&formato=json";
    
-    $.ajax({
+    $.ajax({//XMLHttpRequest, ActiveX
         url:urlDolar,
         method:'get',
         success:function(data){
