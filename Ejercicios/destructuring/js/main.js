@@ -73,20 +73,16 @@ let arrObj2 = [
 	{ id: 3, apellido: "Pasten" },
 ];
 
-let arrayResult = [...arrObj];
-
 console.log('------- SEPARADOR ------');
 
 let arreglo = arrObj.map((el) => { // Recorremos el primer Objeto
-
 	// Buscamos con el método find el elemento que cumpla la condición
-    let arr = arrObj2.find(el2 => el.id == el2.id && {...el, apellido: el2.apellido});
+    let arr = arrObj2.find(el2 => el.id == el2.id);
     // Esto retornará sólo el elemento encontrado.
 
-    return arr 
+    return {...el, apellido: arr.apellido}
     /* Si bien aquí tenemos un solo elemento
-    la función map se encargará de adjuntar todos los resultados 
+    la función map se encargará de adjuntar todos los resultados
     en un solo array */
 });
-
-console.log(arreglo); // Imprimimos el arreglo.
+console.log(arreglo, 'aqui'); // Imprimimos el arreglo.
