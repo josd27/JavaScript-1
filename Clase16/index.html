@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Base decimal
+        //0,1,2,3,4,5,6,7,8,9
+        //0,1
+        //Octal
+        //0,1,2,3,4,5,6,7
+        //DO,RE,MI, FA, SOL,LA,SI, DO
+        //HEXADECIMAL
+        //0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
+        //#45CCAA ->RGB->RGB(20,144,100)
+        //LUCIO
+        async function paso1(){
+            return "Paso 1";
+        }
+        //paso1();
+        const numbers = [{precio:4}, {precio:9}, {precio:-1}, {precio:25}];
+        numbers[2]=17;
+        numbers.find((value,index,array)=>{
+    	console.log(value);
+            if(value.precio==16)
+            {
+                array[index].precio=58;
+            }
+        });
+
+        let cuentas=[1,8,60,45];
+        let datosString=cuentas.join();
+        console.log(datosString);
+        console.log(datosString.split(","));
+        console.log("JoseQuezada".split(""));
+        //reverse-> [45,60,8,1]
+        let ventas=[]
+        ventas.push({nombre:"Gel", precio:5000, stock:5});
+        //{nombre:"Gel", precio:5000, stock:5} ->50
+        ventas.map(ele=> {
+            ele.subTotal=ele.subTotal*0.9;
+            return ele;
+        });
+        function obtenerStock(nombre){
+            ventas.find(ele=>{
+                if(ele.nombre==nombre){
+                    //ele.stock=50;
+                    return ele.stock;
+                }
+            });
+            /*ventas.find(function(ele){
+            if(ele.nombre==nombre){
+                    //ele.stock=50;
+                    return ele.stock;
+                }
+             });*/
+        }
+
+        
+        const obtenerStock2= (nombre)=>{//es lo mismo que la linea 48
+            ventas.find(ele=>{
+                if(ele.nombre==nombre){
+                    //ele.stock=50;
+                    return ele.stock;
+                }
+            });
+        }
+        //let stock= obtenerStock2("Gel")
+        /*()=> {
+            alert(5)
+        };*/
+        
+
+    </script>
+</body>
+</html>

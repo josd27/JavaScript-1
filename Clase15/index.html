@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Hola</button>
+    <script>
+        const nomVariable = (n) => {
+            console.log(n); return n*n;
+        }
+        var nomVariable2 = function(n,m){
+            alert("hola soy "+ n +" y " +m);
+            return n*n;
+        }
+
+        const nomVariable3= (n,m)=>{
+            alert("hola soy "+ n +" y " +m);
+            return n*n;
+        }
+        ()=> 5+4;
+
+        async function saludar(nombre) {
+            console.log(nombre);
+        }
+        saludar("Jose");
+        saludar("Joaquin");
+        saludar("Mauricio");
+    </script>
+</body>
+</html>

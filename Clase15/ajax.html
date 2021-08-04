@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function llamarAjax(){
+            return new Promise(function(ok, noOK){
+                let xhr= new XMLHttpRequest();
+                xhr.onreadystatechange=function(){
+                    if(xhr.status==200 && xhr.readyState==4){
+                        ok(xhr.responseText);
+                    }
+                    else if(xhr.readyState==4){
+                        noOK(xhr);
+                    }
+                }
+                xhr.open("get", "https://api.sbif.cl/api-sbifv3/recursos_api/dolar?apikey=a6073621b6b49dffb8bcd2fe83dc304888a6766b&formato=json");
+                xhr.send();
+            });
+        }
+        llamarAjax().then(dato =>{
+            console.log(dato);
+            let json= JSON.parse(dato);
+            console.log(json);
+            console.log(json.Dolares[0].Valor);
+        }).catch(obj=>{
+            console.log(obj)
+        });
+
+        let ventas=[{id:1,stock:50},{id:2,stock:65},{id:3, stock:60}];
+        
+        function buscarStock(id){
+            console.log(ventas.find((ele)=> ele.id==3));
+            ventas.find(ele=> {
+                if(ele.id==id)
+                    return ele.stock;
+            })
+        }
+        
+
+    </script>
+</body>
+</html>
