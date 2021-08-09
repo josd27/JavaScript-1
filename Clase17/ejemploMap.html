@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="agregar()">agregar</button>
+    <script>
+        let ventas=[];//new Array();
+        class Cliente{
+            constructor(rut, nombre){
+                this.rut=rut;
+                this.nombre=nombre;
+            }
+        }
+
+        class Venta{
+            constructor(nombre,precio,cantidad,cliente){
+                this.nombre=nombre;
+                this.precio=precio;
+                this.cantidad=0;
+                this.subTotal=precio*cantidad;
+                this.cliente=cliente;
+            }
+            
+            Agregar(v){                
+                ventas.push(v);
+            }
+            VerVentas(){
+                console.log(ventas);
+            }
+        }
+
+        
+
+        //agregarVenta();
+        
+
+        function agregar(){
+            let cli= new Cliente("1-9", "Jose")
+            let ven= new Venta("pro1",5000,2,cli);
+            
+            /*ven.nombre="Pro1";
+            ven.precio=5000;
+            ven.cantidad=2;
+            ven.subTotal=ven.cantidad*ven.precio;*/
+            ven.Agregar(ven);
+            ven.VerVentas();
+        }
+
+
+        function agregarVenta(){
+            let v1 ={nombre:"A", precio:1000,cantidad:2,subTotal:2000};
+            let v2 ={nombre:"B", precio:5000,cantidad:1,subTotal:5000};
+            let v3 ={nombre:"C", precio:10000,cantidad:3,subTotal:30000};
+            ventas.push(v1);
+            ventas.push(v2);
+            ventas.push(v3);
+            console.log(ventas);
+            aplicarDescuento();
+        }
+
+        function aplicarDescuento(){
+            if(ventas.length>=3){
+                ventas.map(function(ele, index,array){
+                    ele.subTotal=ele.subTotal*0.9;
+                    return ele
+                });
+            }
+            console.log(ventas);
+        }
+    </script>
+</body>
+</html>

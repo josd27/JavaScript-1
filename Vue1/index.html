@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <h1>{{ titulo }}</h1>
+        {{nombre}}
+        {{apellido}}
+        <ul>
+            <li v-for="task in tareas"><!--v-repeat-->
+                {{task.contenido}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        let frase="Mi primera app con vue";
+
+        let app= new Vue({
+            el:"#demo",
+            data:{
+                titulo:frase,
+                nombre:"Jose",
+                apellido:"Quezada",
+                tareas:[
+                    {contenido:"Clase 1 Vue"},
+                    {contenido:"Clase 2 con Vue-> binding"},
+                    {contenido:"Clase 3 refuerzo -> ciclos"}
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
