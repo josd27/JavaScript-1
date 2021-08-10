@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <form method="post">
+            <div>
+                <label>Nombre</label>
+                <input v-model="nombre" type="text"/>
+            </div>
+            <div>
+                <label>Age</label>
+                <input v-model="edad" type="number"/>
+            </div>
+            <div>
+                <label>pelicula</label>
+                <select v-model="peliculas"></select>
+            </div>
+            <button type="submit" v-on:click="validarFormulario">Aceptar</button>
+        </form>
+        
+        <div>
+            <p v-if="error.length">
+                <ul>
+                    <li v-for="e in error">{{e}}</li>
+                </ul>
+            </p>
+            <h3>Los datos actuales son</h3>
+            <label>Nombre:{{nombre}}</label>
+            <br/>
+            <label>Age:{{edad}}</label>
+        </div>        
+    </div>
+    <script>
+        let app=new Vue({
+            el:"#app",
+            data:{
+                error:[],
+                nombre:null,
+                edad:null,
+                peliculas:null,
+                listaPeliculas:[]
+            },
+            methods:{
+                validarFormulario:function(e){
+                    this.error=[];
+                    /*if(this.nombre && this.edad){
+                        return true;
+                    }*/
+                    //let noHayErrores=true;
+
+                    if(this.edad && (this.edad<0 || this.edad>120)){
+                        this.error.push("Edad no valida")
+                    }
+                    if(this.nombre && this.nombre.length<2){
+                        this.error.push("Nombre muy corto");
+                    }
+
+                    if(!this.nombre){
+                        console.log(this.nombre);
+                        this.error.push("Debe ingresar un nombre");
+                        console.log(this.error);
+                    }
+                    if(!this.edad){
+                        this.error.push("Debe ingresar una edad");
+                    }
+                    if(this.error.length>0){
+                        e.preventDefault();
+                        //noHayErrores=false;
+                    }
+                    else{
+                        return true;
+                    }
+
+                    
+                }
+            }
+        });
+    </script>
+</body>
+</html>
