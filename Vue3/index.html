@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <Login :claseuser="claseuser"  :nombre="text" :placeholderuser="glosa" :placeholderpw="glosapw">
+            
+        </Login>
+    </div>
+    
+    <script>
+        Vue.component("Login",{
+            props:[ "nombre", "placeholderuser", "placeholderpw", "claseuser"],
+            template:'<div><input v-bind:class="claseuser" type="text" :placeholder="placeholderuser">'+
+                      '<br/><input type="password" :placeholder="placeholderpw"><button>{{nombre}}</button></div>'
+        });
+
+        let app= new Vue({
+            el:"#app",
+            data:{
+                text:"Aceptar",
+                glosa:"Rut",
+                glosapw:"Clave Unica",
+                claseuser:"",
+                clasepass:""
+            },
+            methods:{
+                alertar:function(e){
+                    alert("Hola usuario ejemplo");
+                }
+            }
+                
+            
+
+        });
+    </script>
+</body>
+</html>

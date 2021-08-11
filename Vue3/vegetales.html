@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        <todo-item
+            v-for="v in vegetales"
+            :todo="v"
+            v-bind:key="v.id"
+        ></todo-item>
+    </div>
+    <script>
+        Vue.component("todo-item",{
+            props:['todo'],
+            template:"<li>{{ todo.text }}</li>"
+        });
+        let app= new Vue({
+            el:"#app",
+            data:{
+                vegetales:[
+                    {
+                        id:0,
+                        text:"Brocoli"
+                    },
+                    {
+                        id:1,
+                        text:"Espinaca"
+                    },
+                    {
+                        id:2,
+                        text:"Zanahoria"
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
