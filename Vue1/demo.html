@@ -15,18 +15,30 @@
 <body>
     <div id="demo">
   <h1>{{title}}</h1>
-  <ul>
+   <!--<ul>
+     v-repeat -> foreach -> no existe el alias y puedo acceder directamente a las propiedades del objeto/arreglo
     <li
-      v-repeat="todos"
+      v-repeat="todos" 
       v-on="click: done = !done"
-      class="{{done ? 'juanito' : ''}}">
+      class="{{ done ? 'juanito' : ''}}">
       {{content}}
+    </li> 
+  </ul>  --> 
+  <ul><!--v-for me obliga a colocar un alias-->
+    <li v-for="t in todos">
+        {{t.content}}
     </li>
   </ul>
 </div>
 </body>
 <script>
-    var obj=[
+    let ufs=[];
+
+    var demo = new Vue({
+    el: '#demo',
+    data: {
+        title: 'Ejemplo',
+        todos: [
             {
                 done: true,
                 content: 'Learn JavaScript'
@@ -39,12 +51,7 @@
                 done:false,
                 content:"Datos prueba"
             }
-        ];
-    var demo = new Vue({
-    el: '#demo',
-    data: {
-        title: 'Ejemplo',
-        todos: obj
+        ]
     }
 })
 </script>
