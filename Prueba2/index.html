@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>            
+            <!--<form>
+                <input type="text" v-model="nombre">
+                <input type="text" v-model="source">
+                <button @click="agregar" type="button">Ingresar</button>
+            </form>-->
+            <Formulario @agregar="agregar"/>
+        </div>
+        <div>
+            <Catalogo
+            v-for="p in productos"
+            :nombre="p.nombre"
+            :source="p.source"
+        />
+        </div>
+        
+        
+    </div>
+    <script>
+        Vue.component("Catalogo",{
+            props:["nombre", "source"],
+            template:"<div>{{nombre}}<img :src='source'/></div>"
+        });        
+        Vue.component("Formulario",{
+            template:"<form><input v-model='nombre' type='text'><input v-model='source' type='text'><button @click='add' type='button'>Enviar</button></form>",
+            data(){
+                return{                    
+                    nombre:'',
+                    source:''
+                }
+            },
+            methods:{
+                add:function(){
+                    console.log("envento add hijo");
+                    this.$emit("agregar" , this.nombre, this.source);
+                }
+            }
+        });
+        let app= new Vue({
+            el:"#app",
+            data:{
+                productos:[
+                    {nombre:"Pro1", source:"urlimg1.jpg"},
+                    {nombre:"Pro2", source:"urlimg2.jpg"}
+                ],
+            },
+            methods:{
+                agregar:function(n, s){
+                    console.log("entre al agregar",n, s);
+                    this.productos.push({nombre:n, source:s});
+                }
+            }
+        });
+    </script>
+</body>
+</html>
